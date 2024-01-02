@@ -14,6 +14,9 @@ const tasksSlice = createSlice({
     setTaskValue(state, action) {
       state.taskValue = action.payload;
     },
+    removeTask(state, action) {
+      state.list = state.list.filter((task) => task.id !== action.payload);
+    },
     addTask(state, action) {
       state.list.push({
         id: Date.now(),
@@ -38,4 +41,4 @@ const store = configureStore({
 });
 
 export { store };
-export const { toggleTask } = tasksSlice.actions;
+export const { toggleTask, removeTask } = tasksSlice.actions;

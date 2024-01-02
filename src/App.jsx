@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
-import { toggleTask } from "./store";
+import { toggleTask, removeTask } from "./store";
+
 function App() {
   const tasks = useSelector((state) => state.tasks.list);
   const dispatch = useDispatch();
@@ -15,7 +16,12 @@ function App() {
                 onChange={() => dispatch(toggleTask(task.id))}
               />
               <label className="m-3">{task.text}</label>
-              <button className="border p-1 rounded">Remove</button>
+              <button
+                onClick={() => dispatch(removeTask(task.id))}
+                className="border p-1 rounded"
+              >
+                Remove
+              </button>
             </li>
           ))}
         </ul>
