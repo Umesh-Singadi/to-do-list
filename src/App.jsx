@@ -1,12 +1,36 @@
 import { useSelector, useDispatch } from "react-redux";
-import { toggleTask, removeTask } from "./store";
+import { toggleTask, removeTask, addTask, setTaskValue } from "./store";
 
 function App() {
   const tasks = useSelector((state) => state.tasks.list);
+  const taskValue = useSelector((state) => state.tasks.taskValue);
   const dispatch = useDispatch();
+
+  const handleChange = (event) => {
+    const value = event.target.value;
+    dispatch(setTaskValue(value));
+  };
   return (
-    <h1>
+    <div>
       <div className="p-10">
+        <h1>Tasks List</h1>
+        <div className="m-5">
+          <label>
+            New Task :
+            <input
+              type="text"
+              className="border p-1 rounded"
+              value={taskValue}
+              onChange={handleChange}
+            />
+          </label>
+          <button
+            className="border p-1 rounded"
+            onClick={() => dispatch(addTask())}
+          >
+            Add Task
+          </button>
+        </div>
         <ul className="flex flex-col border rounded p-5">
           {tasks.map((task) => (
             <li key={task.id} className="m-1 border rounded-md p-2">
@@ -26,7 +50,7 @@ function App() {
           ))}
         </ul>
       </div>
-    </h1>
+    </div>
   );
 }
 

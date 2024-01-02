@@ -3,7 +3,7 @@ import { createSlice, configureStore } from "@reduxjs/toolkit";
 const tasksSlice = createSlice({
   name: "tasks",
   initialState: {
-    taskValue: "Hello",
+    taskValue: "",
     list: [
       { id: 1, text: "Umesh", completed: false },
       { id: 2, text: "Ajit", completed: false },
@@ -20,10 +20,10 @@ const tasksSlice = createSlice({
     addTask(state, action) {
       state.list.push({
         id: Date.now(),
-        text: action.payload,
-
+        text: state.taskValue,
         competed: false,
-      });
+      }),
+        (state.taskValue = "");
     },
     toggleTask(state, action) {
       const task = state.list.find((task) => task.id === action.payload);
@@ -41,4 +41,5 @@ const store = configureStore({
 });
 
 export { store };
-export const { toggleTask, removeTask } = tasksSlice.actions;
+export const { toggleTask, removeTask, addTask, setTaskValue } =
+  tasksSlice.actions;
