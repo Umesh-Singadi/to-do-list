@@ -18,8 +18,15 @@ const tasksSlice = createSlice({
       state.list.push({
         id: Date.now(),
         text: action.payload,
+
         competed: false,
       });
+    },
+    toggleTask(state, action) {
+      const task = state.list.find((task) => task.id === action.payload);
+      if (task) {
+        task.completed = !task.completed;
+      }
     },
   },
 });
@@ -31,3 +38,4 @@ const store = configureStore({
 });
 
 export { store };
+export const { toggleTask } = tasksSlice.actions;
