@@ -34,12 +34,25 @@ const tasksSlice = createSlice({
   },
 });
 
+const visibilityFilterSlice = createSlice({
+  name: "visibilityFilter",
+  initialState: "all",
+  reducers: {
+    setVisibilityFilter(state, action) {
+      return action.payload;
+    },
+  },
+});
+
 const store = configureStore({
   reducer: {
     tasks: tasksSlice.reducer,
+    visibilityFilter: visibilityFilterSlice.reducer,
   },
 });
 
 export { store };
 export const { toggleTask, removeTask, addTask, setTaskValue } =
   tasksSlice.actions;
+
+export const { setVisibilityFilter } = visibilityFilterSlice.actions;
