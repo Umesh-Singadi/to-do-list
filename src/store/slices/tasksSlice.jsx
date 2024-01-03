@@ -5,9 +5,9 @@ const tasksSlice = createSlice({
   initialState: {
     taskValue: "",
     list: [
-      { id: 1, text: "Umesh", completed: false },
-      { id: 2, text: "Ajit", completed: false },
-      { id: 3, text: "Niranjan", completed: false },
+      { id: 1, text: "YOGA", completed: false },
+      { id: 2, text: "Stuti Chanting", completed: false },
+      { id: 3, text: "Cocking", completed: false },
     ],
   },
   reducers: {
