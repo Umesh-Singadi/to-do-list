@@ -47,7 +47,7 @@ function App() {
           </select>
         </label>
       </div>
-      <div className="mb-8">
+      <div className="mb-8 flex">
         <label className="block text-sm font-medium text-gray-600">
           New Task :
           <input
